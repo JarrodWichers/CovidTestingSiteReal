@@ -1,0 +1,1521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="WardCare24Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="tblAdmission">
+          <Key>
+            <PropertyRef Name="AdmissionID" />
+          </Key>
+          <Property Name="AdmissionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientCode" Type="nvarchar" MaxLength="15" />
+          <Property Name="AdmissionReason" Type="nvarchar" MaxLength="50" />
+          <Property Name="AdmissionTime" Type="nvarchar" MaxLength="10" />
+          <Property Name="AdmissionDate" Type="nvarchar" MaxLength="15" />
+          <Property Name="DischargeTime" Type="nvarchar" MaxLength="10" />
+          <Property Name="DischargeDate" Type="nvarchar" MaxLength="15" />
+          <Property Name="DischargeReason" Type="nvarchar" MaxLength="50" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="BedID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblAlternative">
+          <Key>
+            <PropertyRef Name="AlternativeID" />
+          </Key>
+          <Property Name="AlternativeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BrandID" Type="int" />
+          <Property Name="GenericID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblBed">
+          <Key>
+            <PropertyRef Name="BedID" />
+          </Key>
+          <Property Name="BedID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="52" Nullable="false" />
+          <Property Name="RoomID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBrand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicationID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCheckup">
+          <Key>
+            <PropertyRef Name="CheckupID" />
+          </Key>
+          <Property Name="CheckupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="AdmissionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChronic">
+          <Key>
+            <PropertyRef Name="ChronicID" />
+          </Key>
+          <Property Name="ChronicID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="MedicationID" Type="int" />
+          <Property Name="Frequency" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblChronicCondition">
+          <Key>
+            <PropertyRef Name="ChronicConditionID" />
+          </Key>
+          <Property Name="ChronicConditionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConditionID" Type="int" />
+          <Property Name="PatientID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblCondition">
+          <Key>
+            <PropertyRef Name="ConditionID" />
+          </Key>
+          <Property Name="ConditionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WardCare24.dbo.tblDoctor' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="int" Nullable="false" />
+          <Property Name="LicenseNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="PracticeNumber" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblDoctorCheckup">
+          <Key>
+            <PropertyRef Name="DoctorCheckupID" />
+          </Key>
+          <Property Name="DoctorCheckupID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="CheckupID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblDrugAllergy">
+          <Key>
+            <PropertyRef Name="DrugAllergyID" />
+          </Key>
+          <Property Name="DrugAllergyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicalAllergyID" Type="int" />
+          <Property Name="MedicationID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblDrugChart">
+          <Key>
+            <PropertyRef Name="DrugChartID" />
+          </Key>
+          <Property Name="DrugChartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Dosage" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="MedicationID" Type="int" Nullable="false" />
+          <Property Name="DateGiven" Type="date" />
+          <Property Name="TimeGive" Type="time" Precision="7" />
+        </EntityType>
+        <EntityType Name="tblGeneric">
+          <Key>
+            <PropertyRef Name="GenericID" />
+          </Key>
+          <Property Name="GenericID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicationID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblHospital">
+          <Key>
+            <PropertyRef Name="HospitalID" />
+          </Key>
+          <Property Name="HospitalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelephoneNum" Type="nvarchar" MaxLength="12" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblLocation">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LocationName" Type="nchar" MaxLength="10" />
+          <Property Name="TimeLeft" Type="nvarchar" MaxLength="10" />
+          <Property Name="TimeReturned" Type="nvarchar" MaxLength="10" />
+          <Property Name="AdmissionID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMedicalAid">
+          <Key>
+            <PropertyRef Name="MedicalAidID" />
+          </Key>
+          <Property Name="MedicalAidID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMedicalAidDetail">
+          <Key>
+            <PropertyRef Name="MedicalAidDetailID" />
+          </Key>
+          <Property Name="MedicalAidDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicalAidID" Type="int" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="PlanName" Type="nvarchar" MaxLength="30" />
+          <Property Name="MedicalAidNumber" Type="nvarchar" MaxLength="20" />
+          <Property Name="HeadMemberName" Type="nvarchar" MaxLength="50" />
+          <Property Name="HeadMemberID" Type="nvarchar" MaxLength="15" />
+          <Property Name="HeadMemberNumber" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMedicalAllergy">
+          <Key>
+            <PropertyRef Name="MedicalAllergyID" />
+          </Key>
+          <Property Name="MedicalAllergyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblMedication">
+          <Key>
+            <PropertyRef Name="MedicationID" />
+          </Key>
+          <Property Name="MedicationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ManufacturerID" Type="int" Nullable="false" />
+          <Property Name="Strength" Type="nvarchar" MaxLength="50" />
+          <Property Name="DrugType" Type="nvarchar" MaxLength="50" />
+          <Property Name="ScheduleNo" Type="nvarchar" MaxLength="30" />
+          <Property Name="UnitPrice" Type="float" />
+          <Property Name="ContainsPenicilin" Type="nvarchar" MaxLength="10" />
+          <Property Name="AlternativeID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblNextOfKin">
+          <Key>
+            <PropertyRef Name="NextOfKinID" />
+          </Key>
+          <Property Name="NextOfKinID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Relation" Type="nvarchar" MaxLength="30" />
+          <Property Name="ContactNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WardCare24.dbo.tblNurse' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblNurse">
+          <Key>
+            <PropertyRef Name="NurseID" />
+          </Key>
+          <Property Name="NurseID" Type="int" Nullable="false" />
+          <Property Name="ExpertiseLevel" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblObservation">
+          <Key>
+            <PropertyRef Name="ObservationID" />
+          </Key>
+          <Property Name="ObservationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Date" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Time" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="NurseID" Type="int" Nullable="false" />
+          <Property Name="AdmissionID" Type="int" Nullable="false" />
+          <Property Name="VitalID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientAdmissionID" Type="int" />
+          <Property Name="PrescriberID" Type="int" />
+          <Property Name="ReceivingNurseID" Type="int" />
+          <Property Name="MedicationID" Type="int" />
+          <Property Name="PaymentConfirmed" Type="nvarchar" MaxLength="5" />
+        </EntityType>
+        <EntityType Name="tblOrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderID" Type="int" />
+          <Property Name="MedicationID" Type="int" />
+          <Property Name="Subtotal" Type="float" />
+          <Property Name="Quantity" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPatient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" />
+          <Property Name="ContactNum" Type="nvarchar" MaxLength="12" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="6" Nullable="false" />
+          <Property Name="IdentityNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="DateOfBirth" Type="nvarchar" MaxLength="10" />
+          <Property Name="BedID" Type="int" />
+          <Property Name="NextOfKinID" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPatientMedAllergy">
+          <Key>
+            <PropertyRef Name="PatientMedicalAllergyID" />
+          </Key>
+          <Property Name="PatientMedicalAllergyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicalAllergyID" Type="int" />
+          <Property Name="PatientID" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'WardCare24.dbo.tblPharmacist' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="tblPharmacist">
+          <Key>
+            <PropertyRef Name="PharmacistID" />
+          </Key>
+          <Property Name="PharmacistID" Type="int" Nullable="false" />
+          <Property Name="NPINumber" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblRoom">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="WardID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblScript">
+          <Key>
+            <PropertyRef Name="ScriptID" />
+          </Key>
+          <Property Name="ScriptID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="Status" Type="nvarchar" MaxLength="20" />
+          <Property Name="PrescribedDate" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="tblScriptMed">
+          <Key>
+            <PropertyRef Name="ScriptMedsID" />
+          </Key>
+          <Property Name="ScriptMedsID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicationID" Type="int" />
+          <Property Name="ScriptID" Type="int" />
+          <Property Name="Refills" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="RxNotes" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="tblStock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MedicationID" Type="int" />
+          <Property Name="QtyInStock" Type="int" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Surname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ContactNum" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Role" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="NextOfKinID" Type="int" />
+          <Property Name="maritalStatus" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblVital">
+          <Key>
+            <PropertyRef Name="VitalID" />
+          </Key>
+          <Property Name="VitalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+          <Property Name="Measurement" Type="nvarchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="tblWard">
+          <Key>
+            <PropertyRef Name="WardID" />
+          </Key>
+          <Property Name="WardID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="50" />
+          <Property Name="TelephoneNum" Type="nvarchar" MaxLength="15" />
+          <Property Name="HospitalID" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetDataForCaseReport" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="patientID" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetPatientByCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PatientCode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetPatientByIDNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PatientCode" Type="int" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetPatientByName" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PatientName" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="Sp_GetVital" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="Sp_GetVitalData" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="PatientID" Type="int" Mode="In" />
+          <Parameter Name="Name" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="WardCare24ModelStoreContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAdmission" EntityType="Self.tblAdmission" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblAlternative" EntityType="Self.tblAlternative" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBed" EntityType="Self.tblBed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblBrand" EntityType="Self.tblBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCheckup" EntityType="Self.tblCheckup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChronic" EntityType="Self.tblChronic" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblChronicCondition" EntityType="Self.tblChronicCondition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblCondition" EntityType="Self.tblCondition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctorCheckup" EntityType="Self.tblDoctorCheckup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDrugAllergy" EntityType="Self.tblDrugAllergy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDrugChart" EntityType="Self.tblDrugChart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblGeneric" EntityType="Self.tblGeneric" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHospital" EntityType="Self.tblHospital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblLocation" EntityType="Self.tblLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMedicalAid" EntityType="Self.tblMedicalAid" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMedicalAidDetail" EntityType="Self.tblMedicalAidDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMedicalAllergy" EntityType="Self.tblMedicalAllergy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMedication" EntityType="Self.tblMedication" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblNextOfKin" EntityType="Self.tblNextOfKin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblObservation" EntityType="Self.tblObservation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrderDetail" EntityType="Self.tblOrderDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPatient" EntityType="Self.tblPatient" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPatientMedAllergy" EntityType="Self.tblPatientMedAllergy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRoom" EntityType="Self.tblRoom" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblScript" EntityType="Self.tblScript" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblScriptMed" EntityType="Self.tblScriptMed" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblStock" EntityType="Self.tblStock" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVital" EntityType="Self.tblVital" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblWard" EntityType="Self.tblWard" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblDoctor" EntityType="Self.tblDoctor" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblDoctor].[DoctorID] AS [DoctorID], 
+    [tblDoctor].[LicenseNumber] AS [LicenseNumber], 
+    [tblDoctor].[PracticeNumber] AS [PracticeNumber]
+    FROM [dbo].[tblDoctor] AS [tblDoctor]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblNurse" EntityType="Self.tblNurse" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblNurse].[NurseID] AS [NurseID], 
+    [tblNurse].[ExpertiseLevel] AS [ExpertiseLevel]
+    FROM [dbo].[tblNurse] AS [tblNurse]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="tblPharmacist" EntityType="Self.tblPharmacist" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [tblPharmacist].[PharmacistID] AS [PharmacistID], 
+    [tblPharmacist].[NPINumber] AS [NPINumber]
+    FROM [dbo].[tblPharmacist] AS [tblPharmacist]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WardCare24Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="tblAdmission">
+          <Key>
+            <PropertyRef Name="AdmissionID" />
+          </Key>
+          <Property Name="AdmissionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientCode" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="AdmissionReason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AdmissionTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AdmissionDate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DischargeTime" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="DischargeDate" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="DischargeReason" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="BedID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblAlternative">
+          <Key>
+            <PropertyRef Name="AlternativeID" />
+          </Key>
+          <Property Name="AlternativeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BrandID" Type="Int32" />
+          <Property Name="GenericID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblBed">
+          <Key>
+            <PropertyRef Name="BedID" />
+          </Key>
+          <Property Name="BedID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="52" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RoomID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblBrand">
+          <Key>
+            <PropertyRef Name="BrandID" />
+          </Key>
+          <Property Name="BrandID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicationID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblCheckup">
+          <Key>
+            <PropertyRef Name="CheckupID" />
+          </Key>
+          <Property Name="CheckupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Time" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Notes" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DoctorID" Type="Int32" Nullable="false" />
+          <Property Name="AdmissionID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblChronic">
+          <Key>
+            <PropertyRef Name="ChronicID" />
+          </Key>
+          <Property Name="ChronicID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="MedicationID" Type="Int32" />
+          <Property Name="Frequency" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblChronicCondition">
+          <Key>
+            <PropertyRef Name="ChronicConditionID" />
+          </Key>
+          <Property Name="ChronicConditionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConditionID" Type="Int32" />
+          <Property Name="PatientID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblCondition">
+          <Key>
+            <PropertyRef Name="ConditionID" />
+          </Key>
+          <Property Name="ConditionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblDoctorCheckup">
+          <Key>
+            <PropertyRef Name="DoctorCheckupID" />
+          </Key>
+          <Property Name="DoctorCheckupID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="CheckupID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblDrugAllergy">
+          <Key>
+            <PropertyRef Name="DrugAllergyID" />
+          </Key>
+          <Property Name="DrugAllergyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicalAllergyID" Type="Int32" />
+          <Property Name="MedicationID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblDrugChart">
+          <Key>
+            <PropertyRef Name="DrugChartID" />
+          </Key>
+          <Property Name="DrugChartID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Dosage" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="MedicationID" Type="Int32" Nullable="false" />
+          <Property Name="DateGiven" Type="DateTime" Precision="0" />
+          <Property Name="TimeGive" Type="Time" Precision="7" />
+        </EntityType>
+        <EntityType Name="tblGeneric">
+          <Key>
+            <PropertyRef Name="GenericID" />
+          </Key>
+          <Property Name="GenericID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicationID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblHospital">
+          <Key>
+            <PropertyRef Name="HospitalID" />
+          </Key>
+          <Property Name="HospitalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNum" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblLocation">
+          <Key>
+            <PropertyRef Name="LocationID" />
+          </Key>
+          <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LocationName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TimeLeft" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="TimeReturned" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AdmissionID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblMedicalAid">
+          <Key>
+            <PropertyRef Name="MedicalAidID" />
+          </Key>
+          <Property Name="MedicalAidID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblMedicalAidDetail">
+          <Key>
+            <PropertyRef Name="MedicalAidDetailID" />
+          </Key>
+          <Property Name="MedicalAidDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicalAidID" Type="Int32" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="PlanName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="MedicalAidNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="HeadMemberName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="HeadMemberID" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HeadMemberNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblMedicalAllergy">
+          <Key>
+            <PropertyRef Name="MedicalAllergyID" />
+          </Key>
+          <Property Name="MedicalAllergyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblMedication">
+          <Key>
+            <PropertyRef Name="MedicationID" />
+          </Key>
+          <Property Name="MedicationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManufacturerID" Type="Int32" Nullable="false" />
+          <Property Name="Strength" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DrugType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ScheduleNo" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="UnitPrice" Type="Double" />
+          <Property Name="ContainsPenicilin" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AlternativeID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblNextOfKin">
+          <Key>
+            <PropertyRef Name="NextOfKinID" />
+          </Key>
+          <Property Name="NextOfKinID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Relation" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblObservation">
+          <Key>
+            <PropertyRef Name="ObservationID" />
+          </Key>
+          <Property Name="ObservationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Time" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NurseID" Type="Int32" Nullable="false" />
+          <Property Name="AdmissionID" Type="Int32" Nullable="false" />
+          <Property Name="VitalID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="OrderID" />
+          </Key>
+          <Property Name="OrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientAdmissionID" Type="Int32" />
+          <Property Name="PrescriberID" Type="Int32" />
+          <Property Name="ReceivingNurseID" Type="Int32" />
+          <Property Name="MedicationID" Type="Int32" />
+          <Property Name="PaymentConfirmed" Type="String" MaxLength="5" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblOrderDetail">
+          <Key>
+            <PropertyRef Name="OrderDetailID" />
+          </Key>
+          <Property Name="OrderDetailID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderID" Type="Int32" />
+          <Property Name="MedicationID" Type="Int32" />
+          <Property Name="Subtotal" Type="Double" />
+          <Property Name="Quantity" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPatient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNum" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdentityNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="BedID" Type="Int32" />
+          <Property Name="NextOfKinID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPatientMedAllergy">
+          <Key>
+            <PropertyRef Name="PatientMedicalAllergyID" />
+          </Key>
+          <Property Name="PatientMedicalAllergyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicalAllergyID" Type="Int32" />
+          <Property Name="PatientID" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblRoom">
+          <Key>
+            <PropertyRef Name="RoomID" />
+          </Key>
+          <Property Name="RoomID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="WardID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblScript">
+          <Key>
+            <PropertyRef Name="ScriptID" />
+          </Key>
+          <Property Name="ScriptID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="Status" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PrescribedDate" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblScriptMed">
+          <Key>
+            <PropertyRef Name="ScriptMedsID" />
+          </Key>
+          <Property Name="ScriptMedsID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicationID" Type="Int32" />
+          <Property Name="ScriptID" Type="Int32" />
+          <Property Name="Refills" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="RxNotes" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblStock">
+          <Key>
+            <PropertyRef Name="StockID" />
+          </Key>
+          <Property Name="StockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MedicationID" Type="Int32" />
+          <Property Name="QtyInStock" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Surname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ContactNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Role" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="NextOfKinID" Type="Int32" />
+          <Property Name="maritalStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblVital">
+          <Key>
+            <PropertyRef Name="VitalID" />
+          </Key>
+          <Property Name="VitalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="Measurement" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblWard">
+          <Key>
+            <PropertyRef Name="WardID" />
+          </Key>
+          <Property Name="WardID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TelephoneNum" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="HospitalID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblDoctor">
+          <Key>
+            <PropertyRef Name="DoctorID" />
+          </Key>
+          <Property Name="DoctorID" Type="Int32" Nullable="false" />
+          <Property Name="LicenseNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="PracticeNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblNurse">
+          <Key>
+            <PropertyRef Name="NurseID" />
+          </Key>
+          <Property Name="NurseID" Type="Int32" Nullable="false" />
+          <Property Name="ExpertiseLevel" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblPharmacist">
+          <Key>
+            <PropertyRef Name="PharmacistID" />
+          </Key>
+          <Property Name="PharmacistID" Type="Int32" Nullable="false" />
+          <Property Name="NPINumber" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="WardCare24Entities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="tblAdmissions" EntityType="Self.tblAdmission" />
+          <EntitySet Name="tblAlternatives" EntityType="Self.tblAlternative" />
+          <EntitySet Name="tblBeds" EntityType="Self.tblBed" />
+          <EntitySet Name="tblBrands" EntityType="Self.tblBrand" />
+          <EntitySet Name="tblCheckups" EntityType="Self.tblCheckup" />
+          <EntitySet Name="tblChronics" EntityType="Self.tblChronic" />
+          <EntitySet Name="tblChronicConditions" EntityType="Self.tblChronicCondition" />
+          <EntitySet Name="tblConditions" EntityType="Self.tblCondition" />
+          <EntitySet Name="tblDoctorCheckups" EntityType="Self.tblDoctorCheckup" />
+          <EntitySet Name="tblDrugAllergies" EntityType="Self.tblDrugAllergy" />
+          <EntitySet Name="tblDrugCharts" EntityType="Self.tblDrugChart" />
+          <EntitySet Name="tblGenerics" EntityType="Self.tblGeneric" />
+          <EntitySet Name="tblHospitals" EntityType="Self.tblHospital" />
+          <EntitySet Name="tblLocations" EntityType="Self.tblLocation" />
+          <EntitySet Name="tblMedicalAids" EntityType="Self.tblMedicalAid" />
+          <EntitySet Name="tblMedicalAidDetails" EntityType="Self.tblMedicalAidDetail" />
+          <EntitySet Name="tblMedicalAllergies" EntityType="Self.tblMedicalAllergy" />
+          <EntitySet Name="tblMedications" EntityType="Self.tblMedication" />
+          <EntitySet Name="tblNextOfKins" EntityType="Self.tblNextOfKin" />
+          <EntitySet Name="tblObservations" EntityType="Self.tblObservation" />
+          <EntitySet Name="tblOrders" EntityType="Self.tblOrder" />
+          <EntitySet Name="tblOrderDetails" EntityType="Self.tblOrderDetail" />
+          <EntitySet Name="tblPatients" EntityType="Self.tblPatient" />
+          <EntitySet Name="tblPatientMedAllergies" EntityType="Self.tblPatientMedAllergy" />
+          <EntitySet Name="tblRooms" EntityType="Self.tblRoom" />
+          <EntitySet Name="tblScripts" EntityType="Self.tblScript" />
+          <EntitySet Name="tblScriptMeds" EntityType="Self.tblScriptMed" />
+          <EntitySet Name="tblStocks" EntityType="Self.tblStock" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+          <EntitySet Name="tblVitals" EntityType="Self.tblVital" />
+          <EntitySet Name="tblWards" EntityType="Self.tblWard" />
+          <EntitySet Name="tblDoctors" EntityType="Self.tblDoctor" />
+          <EntitySet Name="tblNurses" EntityType="Self.tblNurse" />
+          <EntitySet Name="tblPharmacists" EntityType="Self.tblPharmacist" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetDataForCaseReport" ReturnType="Collection(WardCare24Model.Sp_GetDataForCaseReport_Result)">
+            <Parameter Name="patientID" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetPatientByCode" ReturnType="Collection(WardCare24Model.Sp_GetPatientByCode_Result)">
+            <Parameter Name="PatientCode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetPatientByIDNumber" ReturnType="Collection(WardCare24Model.Sp_GetPatientByIDNumber_Result)">
+            <Parameter Name="PatientCode" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetPatientByName" ReturnType="Collection(WardCare24Model.Sp_GetPatientByName_Result)">
+            <Parameter Name="PatientName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="Sp_GetVital" ReturnType="Collection(WardCare24Model.Sp_GetVital_Result)" />
+          <FunctionImport Name="Sp_GetVitalData" ReturnType="Collection(WardCare24Model.Sp_GetVitalData_Result)">
+            <Parameter Name="PatientID" Mode="In" Type="Int32" />
+            <Parameter Name="Name" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WardCare24Model.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WardCare24Model.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="Sp_GetDataForCaseReport_Result">
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Surname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DateOfBirth" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DateOfBirth1" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="6" />
+          <Property Type="String" Name="AdmissionReason" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="AdmissionDate" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="AdmissionTime" Nullable="true" MaxLength="10" />
+          <Property Type="Int32" Name="BedID" Nullable="false" />
+          <Property Type="Int32" Name="WardID" Nullable="false" />
+          <Property Type="Int32" Name="RoomID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetPatientByCode_Result">
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Surname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DateOfBirth" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DateOfBirth1" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="PatientID" Nullable="false" />
+          <Property Type="String" Name="HeadMemberID" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MedicalAidNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DischargeDate" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="IdentityNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ContactNum" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Surname1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Relation" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ContactNum1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Email1" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetPatientByIDNumber_Result">
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Surname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DateOfBirth" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DateOfBirth1" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="PatientID" Nullable="false" />
+          <Property Type="String" Name="HeadMemberID" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MedicalAidNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DischargeDate" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="IdentityNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ContactNum" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Surname1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Relation" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ContactNum1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Email1" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetPatientByName_Result">
+          <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Surname" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="DateOfBirth" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="DateOfBirth1" Nullable="true" MaxLength="10" />
+          <Property Type="String" Name="Gender" Nullable="false" MaxLength="6" />
+          <Property Type="Int32" Name="PatientID" Nullable="false" />
+          <Property Type="String" Name="HeadMemberID" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="MedicalAidNumber" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="DischargeDate" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="IdentityNo" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="ContactNum" Nullable="true" MaxLength="12" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Surname1" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Relation" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="ContactNum1" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Email1" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetVital_Result">
+          <Property Type="String" Name="Name" Nullable="true" MaxLength="30" />
+          <Property Type="Int32" Name="VitalID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="Sp_GetVitalData_Result">
+          <Property Type="String" Name="Date" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="VitalID" Nullable="false" />
+          <Property Type="String" Name="Value" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Time" Nullable="false" MaxLength="10" />
+          <Property Type="Int32" Name="NurseID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WardCare24ModelStoreContainer" CdmEntityContainer="WardCare24Entities2">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="WardCare24Model.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAdmissions">
+            <EntityTypeMapping TypeName="WardCare24Model.tblAdmission">
+              <MappingFragment StoreEntitySet="tblAdmission">
+                <ScalarProperty Name="AdmissionID" ColumnName="AdmissionID" />
+                <ScalarProperty Name="PatientCode" ColumnName="PatientCode" />
+                <ScalarProperty Name="AdmissionReason" ColumnName="AdmissionReason" />
+                <ScalarProperty Name="AdmissionTime" ColumnName="AdmissionTime" />
+                <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+                <ScalarProperty Name="DischargeTime" ColumnName="DischargeTime" />
+                <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+                <ScalarProperty Name="DischargeReason" ColumnName="DischargeReason" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="BedID" ColumnName="BedID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblAlternatives">
+            <EntityTypeMapping TypeName="WardCare24Model.tblAlternative">
+              <MappingFragment StoreEntitySet="tblAlternative">
+                <ScalarProperty Name="AlternativeID" ColumnName="AlternativeID" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="GenericID" ColumnName="GenericID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBeds">
+            <EntityTypeMapping TypeName="WardCare24Model.tblBed">
+              <MappingFragment StoreEntitySet="tblBed">
+                <ScalarProperty Name="BedID" ColumnName="BedID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBrands">
+            <EntityTypeMapping TypeName="WardCare24Model.tblBrand">
+              <MappingFragment StoreEntitySet="tblBrand">
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCheckups">
+            <EntityTypeMapping TypeName="WardCare24Model.tblCheckup">
+              <MappingFragment StoreEntitySet="tblCheckup">
+                <ScalarProperty Name="CheckupID" ColumnName="CheckupID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="AdmissionID" ColumnName="AdmissionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChronics">
+            <EntityTypeMapping TypeName="WardCare24Model.tblChronic">
+              <MappingFragment StoreEntitySet="tblChronic">
+                <ScalarProperty Name="ChronicID" ColumnName="ChronicID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="Frequency" ColumnName="Frequency" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblChronicConditions">
+            <EntityTypeMapping TypeName="WardCare24Model.tblChronicCondition">
+              <MappingFragment StoreEntitySet="tblChronicCondition">
+                <ScalarProperty Name="ChronicConditionID" ColumnName="ChronicConditionID" />
+                <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblConditions">
+            <EntityTypeMapping TypeName="WardCare24Model.tblCondition">
+              <MappingFragment StoreEntitySet="tblCondition">
+                <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctorCheckups">
+            <EntityTypeMapping TypeName="WardCare24Model.tblDoctorCheckup">
+              <MappingFragment StoreEntitySet="tblDoctorCheckup">
+                <ScalarProperty Name="DoctorCheckupID" ColumnName="DoctorCheckupID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="CheckupID" ColumnName="CheckupID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDrugAllergies">
+            <EntityTypeMapping TypeName="WardCare24Model.tblDrugAllergy">
+              <MappingFragment StoreEntitySet="tblDrugAllergy">
+                <ScalarProperty Name="DrugAllergyID" ColumnName="DrugAllergyID" />
+                <ScalarProperty Name="MedicalAllergyID" ColumnName="MedicalAllergyID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDrugCharts">
+            <EntityTypeMapping TypeName="WardCare24Model.tblDrugChart">
+              <MappingFragment StoreEntitySet="tblDrugChart">
+                <ScalarProperty Name="DrugChartID" ColumnName="DrugChartID" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Dosage" ColumnName="Dosage" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="DateGiven" ColumnName="DateGiven" />
+                <ScalarProperty Name="TimeGive" ColumnName="TimeGive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblGenerics">
+            <EntityTypeMapping TypeName="WardCare24Model.tblGeneric">
+              <MappingFragment StoreEntitySet="tblGeneric">
+                <ScalarProperty Name="GenericID" ColumnName="GenericID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHospitals">
+            <EntityTypeMapping TypeName="WardCare24Model.tblHospital">
+              <MappingFragment StoreEntitySet="tblHospital">
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="TelephoneNum" ColumnName="TelephoneNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblLocations">
+            <EntityTypeMapping TypeName="WardCare24Model.tblLocation">
+              <MappingFragment StoreEntitySet="tblLocation">
+                <ScalarProperty Name="LocationID" ColumnName="LocationID" />
+                <ScalarProperty Name="LocationName" ColumnName="LocationName" />
+                <ScalarProperty Name="TimeLeft" ColumnName="TimeLeft" />
+                <ScalarProperty Name="TimeReturned" ColumnName="TimeReturned" />
+                <ScalarProperty Name="AdmissionID" ColumnName="AdmissionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMedicalAids">
+            <EntityTypeMapping TypeName="WardCare24Model.tblMedicalAid">
+              <MappingFragment StoreEntitySet="tblMedicalAid">
+                <ScalarProperty Name="MedicalAidID" ColumnName="MedicalAidID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMedicalAidDetails">
+            <EntityTypeMapping TypeName="WardCare24Model.tblMedicalAidDetail">
+              <MappingFragment StoreEntitySet="tblMedicalAidDetail">
+                <ScalarProperty Name="MedicalAidDetailID" ColumnName="MedicalAidDetailID" />
+                <ScalarProperty Name="MedicalAidID" ColumnName="MedicalAidID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="PlanName" ColumnName="PlanName" />
+                <ScalarProperty Name="MedicalAidNumber" ColumnName="MedicalAidNumber" />
+                <ScalarProperty Name="HeadMemberName" ColumnName="HeadMemberName" />
+                <ScalarProperty Name="HeadMemberID" ColumnName="HeadMemberID" />
+                <ScalarProperty Name="HeadMemberNumber" ColumnName="HeadMemberNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMedicalAllergies">
+            <EntityTypeMapping TypeName="WardCare24Model.tblMedicalAllergy">
+              <MappingFragment StoreEntitySet="tblMedicalAllergy">
+                <ScalarProperty Name="MedicalAllergyID" ColumnName="MedicalAllergyID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblMedications">
+            <EntityTypeMapping TypeName="WardCare24Model.tblMedication">
+              <MappingFragment StoreEntitySet="tblMedication">
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ManufacturerID" ColumnName="ManufacturerID" />
+                <ScalarProperty Name="Strength" ColumnName="Strength" />
+                <ScalarProperty Name="DrugType" ColumnName="DrugType" />
+                <ScalarProperty Name="ScheduleNo" ColumnName="ScheduleNo" />
+                <ScalarProperty Name="UnitPrice" ColumnName="UnitPrice" />
+                <ScalarProperty Name="ContainsPenicilin" ColumnName="ContainsPenicilin" />
+                <ScalarProperty Name="AlternativeID" ColumnName="AlternativeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNextOfKins">
+            <EntityTypeMapping TypeName="WardCare24Model.tblNextOfKin">
+              <MappingFragment StoreEntitySet="tblNextOfKin">
+                <ScalarProperty Name="NextOfKinID" ColumnName="NextOfKinID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblObservations">
+            <EntityTypeMapping TypeName="WardCare24Model.tblObservation">
+              <MappingFragment StoreEntitySet="tblObservation">
+                <ScalarProperty Name="ObservationID" ColumnName="ObservationID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="NurseID" ColumnName="NurseID" />
+                <ScalarProperty Name="AdmissionID" ColumnName="AdmissionID" />
+                <ScalarProperty Name="VitalID" ColumnName="VitalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="WardCare24Model.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="PatientAdmissionID" ColumnName="PatientAdmissionID" />
+                <ScalarProperty Name="PrescriberID" ColumnName="PrescriberID" />
+                <ScalarProperty Name="ReceivingNurseID" ColumnName="ReceivingNurseID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="PaymentConfirmed" ColumnName="PaymentConfirmed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderDetails">
+            <EntityTypeMapping TypeName="WardCare24Model.tblOrderDetail">
+              <MappingFragment StoreEntitySet="tblOrderDetail">
+                <ScalarProperty Name="OrderDetailID" ColumnName="OrderDetailID" />
+                <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="Subtotal" ColumnName="Subtotal" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPatients">
+            <EntityTypeMapping TypeName="WardCare24Model.tblPatient">
+              <MappingFragment StoreEntitySet="tblPatient">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="IdentityNo" ColumnName="IdentityNo" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="BedID" ColumnName="BedID" />
+                <ScalarProperty Name="NextOfKinID" ColumnName="NextOfKinID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPatientMedAllergies">
+            <EntityTypeMapping TypeName="WardCare24Model.tblPatientMedAllergy">
+              <MappingFragment StoreEntitySet="tblPatientMedAllergy">
+                <ScalarProperty Name="PatientMedicalAllergyID" ColumnName="PatientMedicalAllergyID" />
+                <ScalarProperty Name="MedicalAllergyID" ColumnName="MedicalAllergyID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRooms">
+            <EntityTypeMapping TypeName="WardCare24Model.tblRoom">
+              <MappingFragment StoreEntitySet="tblRoom">
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="WardID" ColumnName="WardID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblScripts">
+            <EntityTypeMapping TypeName="WardCare24Model.tblScript">
+              <MappingFragment StoreEntitySet="tblScript">
+                <ScalarProperty Name="ScriptID" ColumnName="ScriptID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="PrescribedDate" ColumnName="PrescribedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblScriptMeds">
+            <EntityTypeMapping TypeName="WardCare24Model.tblScriptMed">
+              <MappingFragment StoreEntitySet="tblScriptMed">
+                <ScalarProperty Name="ScriptMedsID" ColumnName="ScriptMedsID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="ScriptID" ColumnName="ScriptID" />
+                <ScalarProperty Name="Refills" ColumnName="Refills" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="RxNotes" ColumnName="RxNotes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblStocks">
+            <EntityTypeMapping TypeName="WardCare24Model.tblStock">
+              <MappingFragment StoreEntitySet="tblStock">
+                <ScalarProperty Name="StockID" ColumnName="StockID" />
+                <ScalarProperty Name="MedicationID" ColumnName="MedicationID" />
+                <ScalarProperty Name="QtyInStock" ColumnName="QtyInStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="WardCare24Model.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="NextOfKinID" ColumnName="NextOfKinID" />
+                <ScalarProperty Name="maritalStatus" ColumnName="maritalStatus" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVitals">
+            <EntityTypeMapping TypeName="WardCare24Model.tblVital">
+              <MappingFragment StoreEntitySet="tblVital">
+                <ScalarProperty Name="VitalID" ColumnName="VitalID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Measurement" ColumnName="Measurement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblWards">
+            <EntityTypeMapping TypeName="WardCare24Model.tblWard">
+              <MappingFragment StoreEntitySet="tblWard">
+                <ScalarProperty Name="WardID" ColumnName="WardID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="TelephoneNum" ColumnName="TelephoneNum" />
+                <ScalarProperty Name="HospitalID" ColumnName="HospitalID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblDoctors">
+            <EntityTypeMapping TypeName="WardCare24Model.tblDoctor">
+              <MappingFragment StoreEntitySet="tblDoctor">
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
+                <ScalarProperty Name="PracticeNumber" ColumnName="PracticeNumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblNurses">
+            <EntityTypeMapping TypeName="WardCare24Model.tblNurse">
+              <MappingFragment StoreEntitySet="tblNurse">
+                <ScalarProperty Name="NurseID" ColumnName="NurseID" />
+                <ScalarProperty Name="ExpertiseLevel" ColumnName="ExpertiseLevel" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPharmacists">
+            <EntityTypeMapping TypeName="WardCare24Model.tblPharmacist">
+              <MappingFragment StoreEntitySet="tblPharmacist">
+                <ScalarProperty Name="PharmacistID" ColumnName="PharmacistID" />
+                <ScalarProperty Name="NPINumber" ColumnName="NPINumber" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WardCare24Model.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WardCare24Model.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WardCare24Model.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="Sp_GetDataForCaseReport" FunctionName="WardCare24Model.Store.Sp_GetDataForCaseReport">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.Sp_GetDataForCaseReport_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="DateOfBirth1" ColumnName="DateOfBirth1" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="AdmissionReason" ColumnName="AdmissionReason" />
+                <ScalarProperty Name="AdmissionDate" ColumnName="AdmissionDate" />
+                <ScalarProperty Name="AdmissionTime" ColumnName="AdmissionTime" />
+                <ScalarProperty Name="BedID" ColumnName="BedID" />
+                <ScalarProperty Name="WardID" ColumnName="WardID" />
+                <ScalarProperty Name="RoomID" ColumnName="RoomID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetPatientByCode" FunctionName="WardCare24Model.Store.Sp_GetPatientByCode">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.Sp_GetPatientByCode_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="DateOfBirth1" ColumnName="DateOfBirth1" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="HeadMemberID" ColumnName="HeadMemberID" />
+                <ScalarProperty Name="MedicalAidNumber" ColumnName="MedicalAidNumber" />
+                <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+                <ScalarProperty Name="IdentityNo" ColumnName="IdentityNo" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname1" ColumnName="Surname1" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="ContactNum1" ColumnName="ContactNum1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetPatientByIDNumber" FunctionName="WardCare24Model.Store.Sp_GetPatientByIDNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.Sp_GetPatientByIDNumber_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="DateOfBirth1" ColumnName="DateOfBirth1" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="HeadMemberID" ColumnName="HeadMemberID" />
+                <ScalarProperty Name="MedicalAidNumber" ColumnName="MedicalAidNumber" />
+                <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+                <ScalarProperty Name="IdentityNo" ColumnName="IdentityNo" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname1" ColumnName="Surname1" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="ContactNum1" ColumnName="ContactNum1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetPatientByName" FunctionName="WardCare24Model.Store.Sp_GetPatientByName">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.Sp_GetPatientByName_Result">
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="DateOfBirth1" ColumnName="DateOfBirth1" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="HeadMemberID" ColumnName="HeadMemberID" />
+                <ScalarProperty Name="MedicalAidNumber" ColumnName="MedicalAidNumber" />
+                <ScalarProperty Name="DischargeDate" ColumnName="DischargeDate" />
+                <ScalarProperty Name="IdentityNo" ColumnName="IdentityNo" />
+                <ScalarProperty Name="ContactNum" ColumnName="ContactNum" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Surname1" ColumnName="Surname1" />
+                <ScalarProperty Name="Relation" ColumnName="Relation" />
+                <ScalarProperty Name="ContactNum1" ColumnName="ContactNum1" />
+                <ScalarProperty Name="Email1" ColumnName="Email1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetVital" FunctionName="WardCare24Model.Store.Sp_GetVital">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.Sp_GetVital_Result">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="VitalID" ColumnName="VitalID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Sp_GetVitalData" FunctionName="WardCare24Model.Store.Sp_GetVitalData">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.Sp_GetVitalData_Result">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="VitalID" ColumnName="VitalID" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="NurseID" ColumnName="NurseID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="WardCare24Model.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="WardCare24Model.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="WardCare24Model.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="WardCare24Model.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="WardCare24Model.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

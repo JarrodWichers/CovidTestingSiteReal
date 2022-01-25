@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{32BEDB9C-6E64-4821-BB69-EC568D5B169E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DAL</RootNamespace>
+    <AssemblyName>DAL</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Class1.cs" />
+    <Compile Include="Classes\Admission.cs" />
+    <Compile Include="Classes\Alternative.cs" />
+    <Compile Include="Classes\Bed.cs" />
+    <Compile Include="Classes\Brand.cs" />
+    <Compile Include="Classes\Checkup.cs" />
+    <Compile Include="Classes\Chronic.cs" />
+    <Compile Include="Classes\ChronicCondition.cs" />
+    <Compile Include="Classes\Condition.cs" />
+    <Compile Include="Classes\DataAccess.cs" />
+    <Compile Include="Classes\Doctor.cs" />
+    <Compile Include="Classes\DoctorCheckup.cs" />
+    <Compile Include="Classes\DrugAllergy.cs" />
+    <Compile Include="Classes\DrugChart.cs" />
+    <Compile Include="Classes\Generic.cs" />
+    <Compile Include="Classes\Hospital.cs" />
+    <Compile Include="Classes\Location.cs" />
+    <Compile Include="Classes\MedicalAid.cs" />
+    <Compile Include="Classes\MedicalAidDetail.cs" />
+    <Compile Include="Classes\MedicalAllergy.cs" />
+    <Compile Include="Classes\Medication.cs" />
+    <Compile Include="Classes\NextOfKin.cs" />
+    <Compile Include="Classes\Nurse.cs" />
+    <Compile Include="Classes\Observation.cs" />
+    <Compile Include="Classes\Order.cs" />
+    <Compile Include="Classes\OrderDetail.cs" />
+    <Compile Include="Classes\Patient.cs" />
+    <Compile Include="Classes\PatientMedAllergy.cs" />
+    <Compile Include="Classes\Pharmacist.cs" />
+    <Compile Include="Classes\Room.cs" />
+    <Compile Include="Classes\RoomCheckup.cs" />
+    <Compile Include="Classes\Staff.cs" />
+    <Compile Include="Classes\Stock.cs" />
+    <Compile Include="Classes\User.cs" />
+    <Compile Include="Classes\Vital.cs" />
+    <Compile Include="Classes\Ward.cs" />
+    <Compile Include="DB\Sp_GetDataForCaseReport_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Sp_GetPatientByCode_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Sp_GetPatientByIDNumber_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Sp_GetPatientByName_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Sp_GetVitalData_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Sp_GetVital_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\sp_helpdiagramdefinition_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\sp_helpdiagrams_Result.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\sysdiagram.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblAdmission.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblAlternative.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblBed.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblBrand.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblCheckup.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblChronic.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblChronicCondition.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblCondition.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblDoctor.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblDoctorCheckup.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblDrugAllergy.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblDrugChart.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblGeneric.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblHospital.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblLocation.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblMedicalAid.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblMedicalAidDetail.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblMedicalAllergy.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblMedication.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblNextOfKin.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblNurse.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblObservation.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblOrder.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblOrderDetail.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblPatient.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblPatientMedAllergy.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblPharmacist.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblRoom.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblScript.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblScriptMed.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblStock.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblUser.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblVital.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\tblWard.cs">
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\WardCare27.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WardCare27.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\WardCare27.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WardCare27.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\WardCare27.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WardCare27.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.Config" />
+    <EntityDeploy Include="DB\WardCare27.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>WardCare27.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB\WardCare27.edmx.diagram">
+      <DependentUpon>WardCare27.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="DB\WardCare27.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WardCare27.edmx</DependentUpon>
+      <LastGenOutput>WardCare27.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="DB\WardCare27.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WardCare27.edmx</DependentUpon>
+      <LastGenOutput>WardCare27.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

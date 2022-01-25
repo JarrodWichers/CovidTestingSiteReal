@@ -1,0 +1,113 @@
+﻿body, html {
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+    outline: 0;
+}
+
+.header {
+    display: flex;
+    height: auto;
+    align-items: center;
+    background-color: #B1D182;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+    .header h1 {
+        margin: 0;
+        display: block;
+        font-family: 'Calibri Light';
+        padding-left: 20px;
+    }
+
+    .header img {
+        padding-left: 10px;
+    }
+
+.sidenav {
+    height: 165%;
+    width: 240px;
+    position: fixed;
+    left: 0px;
+    background-color: #2B463C;
+    padding-top: 20px;
+    font-family: 'Calibri Light';
+    top: 154px;
+}
+
+.sidenav-user {
+    display: block;
+    text-align: center;
+}
+
+.sidenav-user-top {
+    display: block;
+    text-align: center;
+    padding-bottom: 10px;
+}
+
+.sidenav-user-middle {
+    display: inline-block;
+    text-align: center;
+    font-size: 25px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom: solid;
+    border-width: 2px;
+    border-bottom-color: white;
+}
+
+.sidenav-user-bottom {
+    display: block;
+    text-align: center;
+    padding-top: 10px;
+}
+
+    .sidenav-user-bottom i {
+        padding-left: 10px;
+        padding-right: 10px;
+        padding-bottom: 10px;
+    }
+
+.sidenav i {
+    color: white;
+}
+
+    .sidenav i:hover {
+        color: #b1d182;
+    }
+
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+
+    .sidenav a:hover {
+        color: #b1d182;
+    }
+
+.sidenav-signout {
+    display: block;
+    text-align: center;
+    color: white;
+    position: relative;
+    padding-top: 20px;
+    top: 0px;
+    left: 0px;
+}
+
+.sidenav-signout-icon {
+    display: block;
+}
+
+.sidenav-signout-text {
+    display: block;
+    font-size: 24px;
+    font-weight: normal;
+    font-family: 'Calibri Light';
+}

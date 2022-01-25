@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="WardAdminDashboard.master.cs" Inherits="HWMS08.WardAdmin.WardAdminDashboard" %>
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head runat="server">
+    <title>Administrator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+    
+    <link rel="shortcut icon" type="image/x-icon" href="../Contents/AdminBootstrap/Template/assets/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../Contents/AdminBootstrap/Template/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../Contents/AdminBootstrap/Template/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="../Contents/AdminBootstrap/Template/assets/css/style.css">
+    <link rel="stylesheet" href="../Styles.css" />
+    <link rel="stylesheet" href="Dashboard.css"/>
+    
+    
+    <asp:ContentPlaceHolder ID="head" runat="server">
+        
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="frmDashboard" runat="server">
+        <div class="main-wrapper">
+
+         <div class="header">
+			<div class="header-left">
+				<a href="index-2.html" class="logo">
+					<img src="../Resources/logoSquare.jpg" width="50" height="50" alt="WardCare24 Logo"> <span>ONP400 Project</span>
+				</a>
+			</div>
+			<a id="toggle_btn" href="javascript:void(0);"><i class="fa fa-bars"></i></a>
+            <a id="mobile_btn" class="mobile_btn float-left" href="#sidebar"><i class="fa fa-bars"></i></a>         
+        </div>
+
+         <div class="sidebar" id="sidebar">
+            <div class="sidebar-inner slimscroll">
+                <div id="sidebar-menu" class="sidebar-menu">                    
+                    <ul>
+                        <%--<li class="menu-title"><i class="fa fa-user-circle"></i></li>--%>
+                        <li class="menu-title"><asp:Label runat="server" ID="lblUserName"></asp:Label></li> <!--THIS IS WHERE USER GOES-->
+                        <li class="sidebar-menu link a">
+                            <a href="WardAdminHome.aspx"><i class="fa fa-home"></i> <span>Home</span></a>
+                        </li>
+
+                        <li style="font:italic">
+                            <a href="../default.aspx"><i class="fa fa-sign-out"></i> <span>Sign Out</span></a>
+                        </li>
+                    </ul>              
+                </div>
+            </div>
+        </div>
+        <div class="page-wrapper">
+            <div class="content" style="background-color:#f4f1e9">
+                <asp:ContentPlaceHolder ID="cphContent" runat="server">
+                </asp:ContentPlaceHolder>	
+            </div>   
+        </div>
+    </div>
+    
+         <script src="/Contents/AdminBootstrap/Template/assets/js/jquery-3.2.1.min.js"></script>
+	    <script src="/Contents/AdminBootstrap/Template/assets/js/popper.min.js"></script>
+        <script src="/Contents/AdminBootstrap/Template/assets/js/bootstrap.min.js"></script>
+        <script src="/Contents/AdminBootstrap/Template/assets/js/jquery.slimscroll.js"></script>
+        <script src="/Contents/AdminBootstrap/Template/assets/js/Chart.bundle.js"></script>
+        <script src="/Contents/AdminBootstrap/Template/assets/js/chart.js"></script>
+        <script src="/Contents/AdminBootstrap/Template/assets/js/app.js"></script>        
+
+    </form>
+</body>
+</html>

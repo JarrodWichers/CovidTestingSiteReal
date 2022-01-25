@@ -1,0 +1,481 @@
+﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2F541FF-E4A5-4D9F-B557-64B138BA4AAB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>HWMS08</RootNamespace>
+    <AssemblyName>HWMS08</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44351</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BouncyCastle.Crypto, Version=1.8.6.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
+      <HintPath>..\packages\BouncyCastle.1.8.6.1\lib\BouncyCastle.Crypto.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Contents\AdminBootstrap\Template\activities.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-appointment.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-asset.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-blog.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-department.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-doctor.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-employee.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-expense.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-holiday.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-leave-type.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-leave.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-patient.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-provident-fund.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-role.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-salary.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-schedule.html" />
+    <Content Include="Contents\AdminBootstrap\Template\add-tax.html" />
+    <Content Include="Contents\AdminBootstrap\Template\appointments.html" />
+    <Content Include="Contents\AdminBootstrap\Template\assets.html" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\bootstrap-datetimepicker.min.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\bootstrap.min.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\dataTables.bootstrap4.min.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\font-awesome.min.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\fullcalendar.min.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\select2.min.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\style.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\css\tagsinput.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\fonts\fontawesome-webfont3e6e.html" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\attachment.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-01.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-02.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-03.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-04.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-thumb-01.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-thumb-02.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-thumb-03.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\blog\blog-thumb-04.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\calander.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\clock.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-03.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-01.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-02.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-03.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-04.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-05.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-06.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-07.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-08.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-09.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-10.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-11.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\doctor-thumb-12.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\favicon.ico" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\logo-dark.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\logo.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\patient-thumb-01.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\patient-thumb-02.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\placeholder-thumb.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\placeholder.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\sent.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\user-02.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\user-03.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\user-04.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\user-05.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\user-06.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\user.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\img\video-call.jpg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\app.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\bootstrap-datetimepicker.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\bootstrap.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\Chart.bundle.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\chart.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\dataTables.bootstrap4.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\fullcalendar.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\jquery-3.2.1.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\jquery-ui.min.html" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\jquery.dataTables.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\jquery.fullcalendar.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\jquery.slimscroll.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\moment.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\popper.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\select2.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\js\tagsinput.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\css\lightgallery.min.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\fonts\lgd641.svg" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\img\loading.gif" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\img\video-play.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\img\vimeo-play.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\img\youtube-play.png" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\js\lightgallery-all.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\summernote\dist\summernote-bs4.css" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\summernote\dist\summernote-bs4.min.js" />
+    <Content Include="Contents\AdminBootstrap\Template\attendance.html" />
+    <Content Include="Contents\AdminBootstrap\Template\blank-page.html" />
+    <Content Include="Contents\AdminBootstrap\Template\blog-details.html" />
+    <Content Include="Contents\AdminBootstrap\Template\blog.html" />
+    <Content Include="Contents\AdminBootstrap\Template\calendar.html" />
+    <Content Include="Contents\AdminBootstrap\Template\change-password.html" />
+    <Content Include="Contents\AdminBootstrap\Template\change-password2.html" />
+    <Content Include="Contents\AdminBootstrap\Template\chat.html" />
+    <Content Include="Contents\AdminBootstrap\Template\compose.html" />
+    <Content Include="Contents\AdminBootstrap\Template\create-invoice.html" />
+    <Content Include="Contents\AdminBootstrap\Template\departments.html" />
+    <Content Include="Contents\AdminBootstrap\Template\doctors.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-appointment.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-asset.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-blog.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-department.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-doctor.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-employee.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-expense.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-holiday.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-invoice.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-leave-type.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-leave.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-patient.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-profile.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-provident-fund.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-role.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-salary.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-schedule.html" />
+    <Content Include="Contents\AdminBootstrap\Template\edit-tax.html" />
+    <Content Include="Contents\AdminBootstrap\Template\email-settings.html" />
+    <Content Include="Contents\AdminBootstrap\Template\employees.html" />
+    <Content Include="Contents\AdminBootstrap\Template\error-404.html" />
+    <Content Include="Contents\AdminBootstrap\Template\error-500.html" />
+    <Content Include="Contents\AdminBootstrap\Template\expense-reports.html" />
+    <Content Include="Contents\AdminBootstrap\Template\expenses.html" />
+    <Content Include="Contents\AdminBootstrap\Template\forgot-password.html" />
+    <Content Include="Contents\AdminBootstrap\Template\form-basic-inputs.html" />
+    <Content Include="Contents\AdminBootstrap\Template\form-horizontal.html" />
+    <Content Include="Contents\AdminBootstrap\Template\form-input-groups.html" />
+    <Content Include="Contents\AdminBootstrap\Template\form-vertical.html" />
+    <Content Include="Contents\AdminBootstrap\Template\gallery.html" />
+    <Content Include="Contents\AdminBootstrap\Template\holidays.html" />
+    <Content Include="Contents\AdminBootstrap\Template\inbox.html" />
+    <Content Include="Contents\AdminBootstrap\Template\incoming-call.html" />
+    <Content Include="Contents\AdminBootstrap\Template\index-2.html" />
+    <Content Include="Contents\AdminBootstrap\Template\index.html" />
+    <Content Include="Contents\AdminBootstrap\Template\invoice-reports.html" />
+    <Content Include="Contents\AdminBootstrap\Template\invoice-settings.html" />
+    <Content Include="Contents\AdminBootstrap\Template\invoice-view.html" />
+    <Content Include="Contents\AdminBootstrap\Template\invoices.html" />
+    <Content Include="Contents\AdminBootstrap\Template\leave-type.html" />
+    <Content Include="Contents\AdminBootstrap\Template\leaves.html" />
+    <Content Include="Contents\AdminBootstrap\Template\localization.html" />
+    <Content Include="Contents\AdminBootstrap\Template\lock-screen.html" />
+    <Content Include="Contents\AdminBootstrap\Template\login.html" />
+    <Content Include="Contents\AdminBootstrap\Template\mail-view.html" />
+    <Content Include="Contents\AdminBootstrap\Template\notifications-settings.html" />
+    <Content Include="Contents\AdminBootstrap\Template\patients.html" />
+    <Content Include="Contents\AdminBootstrap\Template\payments.html" />
+    <Content Include="Contents\AdminBootstrap\Template\profile.html" />
+    <Content Include="Contents\AdminBootstrap\Template\provident-fund.html" />
+    <Content Include="Contents\AdminBootstrap\Template\register.html" />
+    <Content Include="Contents\AdminBootstrap\Template\roles-permissions.html" />
+    <Content Include="Contents\AdminBootstrap\Template\salary-settings.html" />
+    <Content Include="Contents\AdminBootstrap\Template\salary-view.html" />
+    <Content Include="Contents\AdminBootstrap\Template\salary.html" />
+    <Content Include="Contents\AdminBootstrap\Template\schedule.html" />
+    <Content Include="Contents\AdminBootstrap\Template\settings.html" />
+    <Content Include="Contents\AdminBootstrap\Template\tables-basic.html" />
+    <Content Include="Contents\AdminBootstrap\Template\tables-datatables.html" />
+    <Content Include="Contents\AdminBootstrap\Template\tabs.html" />
+    <Content Include="Contents\AdminBootstrap\Template\taxes.html" />
+    <Content Include="Contents\AdminBootstrap\Template\theme-settings.html" />
+    <Content Include="Contents\AdminBootstrap\Template\typography.html" />
+    <Content Include="Contents\AdminBootstrap\Template\uikit.html" />
+    <Content Include="Contents\AdminBootstrap\Template\video-call.html" />
+    <Content Include="Contents\AdminBootstrap\Template\voice-call.html" />
+    <Content Include="MainMember\Dashboard.css" />
+    <Content Include="MainMember\NurseDashboard.aspx" />
+    <Content Include="MainMember\RegisterDependent.aspx" />
+    <Content Include="MainMember\Test Request.aspx" />
+    <Content Include="MainMember\MainMemberRegistration.aspx" />
+    <Content Include="Nurse\ChooseVisit.aspx" />
+    <Content Include="Nurse\Dashboard.css" />
+    <Content Include="Nurse\FavouriteSuburb.aspx" />
+    <Content Include="Nurse\ViewSchedule.aspx" />
+    <Content Include="Nurse\CaptureVisit.aspx" />
+    <Content Include="Nurse\SchduleTests.aspx" />
+    <Content Include="Resources\logoSquare.jpg" />
+    <Content Include="Resources\WardCare24_Logo.jpg" />
+    <Content Include="WardAdmin\Dashboard.css" />
+    <Content Include="default.aspx" />
+    <Content Include="MainMember\Test.aspx" />
+    <Content Include="Resources\pines.jpg" />
+    <Content Include="WardAdmin\ReportingHome.aspx" />
+    <Content Include="WardAdmin\Styles.css" />
+    <Content Include="WardAdmin\WardAdminHome.aspx" />
+    <Content Include="Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="default.aspx.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="default.aspx.designer.cs">
+      <DependentUpon>default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainMember\Doctor.Master.cs">
+      <DependentUpon>Doctor.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMember\Doctor.Master.designer.cs">
+      <DependentUpon>Doctor.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MainMember\NurseDashboard.aspx.cs">
+      <DependentUpon>NurseDashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMember\NurseDashboard.aspx.designer.cs">
+      <DependentUpon>NurseDashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainMember\RegisterDependent.aspx.cs">
+      <DependentUpon>RegisterDependent.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMember\RegisterDependent.aspx.designer.cs">
+      <DependentUpon>RegisterDependent.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainMember\Test Request.aspx.cs">
+      <DependentUpon>Test Request.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMember\Test Request.aspx.designer.cs">
+      <DependentUpon>Test Request.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainMember\MainMemberRegistration.aspx.cs">
+      <DependentUpon>MainMemberRegistration.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMember\MainMemberRegistration.aspx.designer.cs">
+      <DependentUpon>MainMemberRegistration.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MainMember\Site1.Master.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMember\Site1.Master.designer.cs">
+      <DependentUpon>Site1.Master</DependentUpon>
+    </Compile>
+    <Compile Include="MainMember\Test.aspx.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MainMember\Test.aspx.designer.cs">
+      <DependentUpon>Test.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\ChooseVisit.aspx.cs">
+      <DependentUpon>ChooseVisit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nurse\ChooseVisit.aspx.designer.cs">
+      <DependentUpon>ChooseVisit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\NurseMasterPage.Master.cs">
+      <DependentUpon>NurseMasterPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nurse\NurseMasterPage.Master.designer.cs">
+      <DependentUpon>NurseMasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\FavouriteSuburb.aspx.cs">
+      <DependentUpon>FavouriteSuburb.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nurse\FavouriteSuburb.aspx.designer.cs">
+      <DependentUpon>FavouriteSuburb.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\ViewSchedule.aspx.cs">
+      <DependentUpon>ViewSchedule.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nurse\ViewSchedule.aspx.designer.cs">
+      <DependentUpon>ViewSchedule.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\CaptureVisit.aspx.cs">
+      <DependentUpon>CaptureVisit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nurse\CaptureVisit.aspx.designer.cs">
+      <DependentUpon>CaptureVisit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Nurse\SchduleTests.aspx.cs">
+      <DependentUpon>SchduleTests.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Nurse\SchduleTests.aspx.designer.cs">
+      <DependentUpon>SchduleTests.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WardAdmin\ReportingHome.aspx.cs">
+      <DependentUpon>ReportingHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WardAdmin\ReportingHome.aspx.designer.cs">
+      <DependentUpon>ReportingHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WardAdmin\WardAdminDashboard.Master.cs">
+      <DependentUpon>WardAdminDashboard.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WardAdmin\WardAdminDashboard.Master.designer.cs">
+      <DependentUpon>WardAdminDashboard.Master</DependentUpon>
+    </Compile>
+    <Compile Include="WardAdmin\WardAdminHome.aspx.cs">
+      <DependentUpon>WardAdminHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WardAdmin\WardAdminHome.aspx.designer.cs">
+      <DependentUpon>WardAdminHome.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Nurse\NurseMasterPage.Master" />
+    <Content Include="MainMember\Doctor.Master" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\fonts\lgd41d.eot" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\fonts\lgd641.eot" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\fonts\lgd641.ttf" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\light-gallery\fonts\lgd641.woff" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\summernote\dist\font\summernote4c4d.eot" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\summernote\dist\font\summernote4c4d.ttf" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\summernote\dist\font\summernote4c4d.woff" />
+    <Content Include="Contents\AdminBootstrap\Template\assets\plugins\summernote\dist\font\summernoted41d.eot" />
+    <Content Include="MainMember\Site1.Master" />
+    <None Include="packages.config" />
+    <Content Include="WardAdmin\WardAdminDashboard.Master" />
+    <None Include="Properties\PublishProfiles\HWMS08.pubxml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Contents\ClientBootstrap\" />
+    <Folder Include="MasterPages\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
+      <Project>{6ccedc9d-6aa6-4313-97af-f6ef3053fe37}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{1e278022-8a0f-4437-b167-72d1279701f0}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>50133</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44351/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
